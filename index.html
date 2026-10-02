@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Goran – osebna domača stran</title>
+  <meta name="description" content="Osebna domača stran Gorana – povezave do vseh podstrani.">
+  <meta name="color-scheme" content="dark">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Dobrodošli</p>
+      <h1>Pozdravljeni, jaz sem <span class="accent">Goran</span></h1>
+      <p class="tagline">Tukaj bo kratek opis o meni (nadomestno besedilo).</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section aria-labelledby="podstrani">
+      <h2 id="podstrani">Moje podstrani</h2>
+      <div id="cards" class="grid" aria-live="polite"></div>
+      <noscript><p class="muted">Za prikaz povezav je potreben JavaScript.</p></noscript>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year">2026</span> Goran. Vse pravice pridržane.</p>
+    </div>
+  </footer>
+
+  <script src="links.js"></script>
+  <script>
+    (function () {
+      var grid = document.getElementById("cards");
+      (window.LINKS || []).forEach(function (l) {
+        var a = document.createElement("a");
+        a.className = "card";
+        a.href = l.url;
+        a.rel = "noopener";
+
+        var icon = document.createElement("span");
+        icon.className = "card-icon";
+        icon.setAttribute("aria-hidden", "true");
+        icon.textContent = l.icon || "🔗";
+
+        var title = document.createElement("h3");
+        title.textContent = l.title;
+
+        var desc = document.createElement("p");
+        desc.textContent = l.description;
+
+        var host = document.createElement("span");
+        host.className = "card-url";
+        try { host.textContent = new URL(l.url).host; } catch (e) { host.textContent = l.url; }
+
+        a.append(icon, title, desc, host);
+        if (l.placeholder) {
+          var badge = document.createElement("span");
+          badge.className = "badge";
+          badge.textContent = "Nadomestni vnos";
+          a.appendChild(badge);
+        }
+        grid.appendChild(a);
+      });
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
