@@ -2,18 +2,10 @@
 // Polja: title, description, url, icon (emoji). "placeholder: true" prikaže oznako »Nadomestni vnos« – pri pravem vnosu jo odstranite.
 window.LINKS = [
   {
-    title: "Trening",
-    description: "Treningi, načrti in napredek. (nadomestni opis)",
-    url: "https://trening.example.si",
-    icon: "🏋️",
-    placeholder: true
-  },
-  {
-    title: "Pravo",
-    description: "Pravni zapiski in viri. (nadomestni opis)",
-    url: "https://pravo.example.si",
-    icon: "⚖️",
-    placeholder: true
+    title: "Sončna elektrarna",
+    description: "Stanje in proizvodnja moje sončne elektrarne.",
+    url: "sonce.html",
+    icon: "☀️"
   },
   {
     title: "Blog",
